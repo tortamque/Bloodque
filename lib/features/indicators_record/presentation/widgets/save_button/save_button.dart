@@ -15,7 +15,7 @@ class SaveButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: TextButton(
           onPressed: () {
-            print('state.time: ${state.time}, state.date: ${state.date}');
+            print('state.time: ${state.time}, state.date: ${state.date}, systolic: ${state.systolic}, diastolic: ${state.diastolic}, pulse: ${state.pulse}');
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color?>(mainColor),

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class CustomNumberPicker extends StatefulWidget {
-  const CustomNumberPicker({super.key, required this.minValue, required this.maxValue, required this.initialValue});
+  const CustomNumberPicker({super.key, required this.minValue, required this.maxValue, required this.initialValue, required this.onChanged});
 
   final int minValue;
   final int maxValue;
   final int initialValue;
+  final void Function(int value) onChanged;
 
   @override
   State<CustomNumberPicker> createState() => _CustomNumberPickerState();
@@ -29,7 +30,11 @@ class _CustomNumberPickerState extends State<CustomNumberPicker> {
       value: _currentValue,
       minValue: widget.minValue,
       maxValue: widget.maxValue,
-      onChanged: (value) => setState(() => _currentValue = value),
+      onChanged: (value){
+        setState(() => _currentValue = value);
+
+        widget.onChanged(_currentValue);
+      },
       selectedTextStyle: const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.bold,

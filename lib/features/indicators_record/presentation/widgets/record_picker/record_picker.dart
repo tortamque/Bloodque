@@ -2,13 +2,14 @@ import 'package:bloodque/features/indicators_record/presentation/widgets/record_
 import 'package:flutter/material.dart';
 
 class RecordPicker extends StatelessWidget {
-  const RecordPicker({super.key, required this.title, required this.measureUnit, required this.minValue, required this.maxValue, required this.initialValue});
+  const RecordPicker({super.key, required this.title, required this.measureUnit, required this.minValue, required this.maxValue, required this.initialValue, required this.onChanged});
 
   final String title;
   final String measureUnit;
   final int minValue;
   final int maxValue;
   final int initialValue;
+  final void Function(int value) onChanged;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -23,6 +24,7 @@ class RecordPicker extends StatelessWidget {
               minValue: minValue, 
               maxValue: maxValue, 
               initialValue: initialValue,
+              onChanged: onChanged,
             ),
           ],
         ),
