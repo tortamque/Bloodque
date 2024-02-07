@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Measure extends Equatable {
-  Measure({required this.systolic, required this.diastolic, required this.pulse, required this.time, required this.date});
+  const Measure({required this.systolic, required this.diastolic, required this.pulse, required this.time, required this.date});
 
   final int systolic;
   final int diastolic;
