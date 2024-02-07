@@ -15,7 +15,7 @@ class DatabaseServiceImpl implements DatabaseService{
   final Box<dynamic> _box;
   
   @override
-  List<MeasureModel>? getMeasures() => _box.get(hiveMeasuresKey);
+  List<MeasureModel>? getMeasures() => _box.get(hiveMeasuresKey, defaultValue: [])?.cast<MeasureModel>();
   
   @override
   Future<void> saveMeasure(MeasureEntity measure) async{
