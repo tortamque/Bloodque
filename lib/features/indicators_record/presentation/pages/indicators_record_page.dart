@@ -16,13 +16,7 @@ class IndicatorsRecordPage extends StatelessWidget {
         children: [
           const _RecordPickers(),
           const _DateText(),
-          
-          Row(
-            children: [
-              const CustomDatePicker(),
-              const CustomTimePicker(),
-            ],
-          ),
+          const _DateAndTimePickers(),
         ],
       ),
     ),
@@ -80,5 +74,17 @@ class _DateText extends StatelessWidget {
         ),
       ),
     ),
+  );
+}
+
+class _DateAndTimePickers extends StatelessWidget {
+  const _DateAndTimePickers();
+
+  @override
+  Widget build(BuildContext context) => const Row(
+    children: [
+      CustomDatePicker(),
+      CustomTimePicker(),
+    ],
   );
 }
