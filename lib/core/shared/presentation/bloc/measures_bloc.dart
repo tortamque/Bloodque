@@ -14,10 +14,10 @@ class MeasuresBloc extends Bloc<MeasuresEvent, MeasuresState> {
 
   final SaveMeasureUseCase _saveMeasureUseCase;
 
-  void _saveMeasure(SaveMeasureEvent event, Emitter<MeasuresState> emitter) {
+  Future<void> _saveMeasure(SaveMeasureEvent event, Emitter<MeasuresState> emitter) async {
     emit(const MeasuresLoading());
 
-    _saveMeasureUseCase(
+    await _saveMeasureUseCase(
       params: SaveMeasureParams(
           event.measure,
       ),
