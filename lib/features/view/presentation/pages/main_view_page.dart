@@ -35,6 +35,14 @@ class _MainViewPageState extends State<MainViewPage> {
           } else if (state is GetMeasuresStateDone) {
             return Scaffold(
               appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: mainColor,
+                foregroundColor: Colors.white,
+                onPressed: () {
+                  print('tapped! :D');
+                },
+                child: const Icon(Icons.add),
+              ),
               body: ListView.builder(
                 itemCount: state.measures?.length ?? 0,
                 itemBuilder: (context, index) {
