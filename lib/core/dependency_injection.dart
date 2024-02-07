@@ -13,7 +13,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 GetIt getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
   await _initializeHive();
-  _registerAdapters();
 
   var box = await _initializeBox();
 
@@ -37,12 +36,10 @@ Future<void> initializeDependencies() async {
 
 Future<void> _initializeHive() async {
   await Hive.initFlutter();
-  await Hive.openBox(hiveMeasureBox);
-}
 
-Future<Box<dynamic>> _initializeBox() async => await Hive.openBox(hiveMeasureBox);
-
-void _registerAdapters(){
   Hive.registerAdapter(MeasureModelAdapter());
   Hive.registerAdapter(MeasureEntityAdapter());
+
 }
+
+Future<Box<dynamic>> _initializeBox() async =>  Hive.openBox(hiveMeasureBox);
