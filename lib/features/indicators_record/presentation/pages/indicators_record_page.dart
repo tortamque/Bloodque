@@ -45,7 +45,7 @@ class _RecordPickers extends StatelessWidget {
           title: 'Systolic',
           measureUnit: 'mmHg',
           minValue: 70,
-          maxValue: 160,
+          maxValue: 190,
           initialValue: 100,
           onChanged: (value) => context.read<ChangeMeasureBloc>().add(ChangeSystolicMeasureEvent(value)),
         ),
