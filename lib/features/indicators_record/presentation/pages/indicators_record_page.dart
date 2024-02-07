@@ -10,35 +10,42 @@ class IndicatorsRecordPage extends StatelessWidget {
     appBar: const CustomAppBar(title: 'New Record'),
     body: Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Row(
-            children: [
-              RecordPicker(
-                title: 'Systolic',
-                measureUnit: 'mmHg',
-                minValue: 70,
-                maxValue: 160,
-                initialValue: 100,
-              ),
-              RecordPicker(
-                title: 'Diastolic',
-                measureUnit: 'mmHg',
-                minValue: 60,
-                maxValue: 90,
-                initialValue: 78,
-              ),
-              RecordPicker(
-                title: 'Pulse',
-                measureUnit: 'BPM',
-                minValue: 50,
-                maxValue: 200,
-                initialValue: 80,
-              ),
-            ],
-          ),
-        )
+        _RecordPickers(),
       ],
     )
+  );
+}
+
+class _RecordPickers extends StatelessWidget {
+  const _RecordPickers();
+
+  @override
+  Widget build(BuildContext context) => const Padding(
+    padding: EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      children: [
+        RecordPicker(
+          title: 'Systolic',
+          measureUnit: 'mmHg',
+          minValue: 70,
+          maxValue: 160,
+          initialValue: 100,
+        ),
+        RecordPicker(
+          title: 'Diastolic',
+          measureUnit: 'mmHg',
+          minValue: 60,
+          maxValue: 90,
+          initialValue: 78,
+        ),
+        RecordPicker(
+          title: 'Pulse',
+          measureUnit: 'BPM',
+          minValue: 50,
+          maxValue: 200,
+          initialValue: 80,
+        ),
+      ],
+    ),
   );
 }
