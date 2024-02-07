@@ -1,6 +1,7 @@
 import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
 import 'package:bloodque/features/indicators_record/presentation/widgets/date_picker/custom_date_picker.dart';
 import 'package:bloodque/features/indicators_record/presentation/widgets/record_picker/record_picker.dart';
+import 'package:bloodque/features/indicators_record/presentation/widgets/time_picker/custom_time_picker.dart';
 import 'package:flutter/material.dart';
 
 class IndicatorsRecordPage extends StatelessWidget {
@@ -13,23 +14,18 @@ class IndicatorsRecordPage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          _RecordPickers(),
-          _DateText(),
+          const _RecordPickers(),
+          const _DateText(),
           
           Row(
             children: [
               const CustomDatePicker(),
-              Expanded(
-                child: Container(
-                  height: 50,
-                  color: Colors.red,
-                ),
-              ),
+              const CustomTimePicker(),
             ],
-          )
+          ),
         ],
       ),
-    )
+    ),
   );
 }
 
