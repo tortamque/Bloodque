@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 part 'measure_entity.g.dart';
@@ -14,7 +15,7 @@ class MeasureEntity extends Equatable {
   @HiveField(2)
   final int pulse;
   @HiveField(3)
-  final DateTime time;
+  final TimeOfDay time;
   @HiveField(4)
   final DateTime date;
   
