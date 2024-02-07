@@ -15,11 +15,13 @@ class DatabaseServiceImpl implements DatabaseService{
   final Box<dynamic> _box;
   
   @override
-  List<MeasureModel>? getMeasures()=> _box.get(hiveMeasuresKey);
+  List<MeasureModel>? getMeasures() => _box.get(hiveMeasuresKey);
   
   @override
   Future<void> saveMeasure(MeasureEntity measure) async{
-    final measures = getMeasures() ?? <MeasureEntity>[];
+    final measures = getMeasures()?.map(
+      (model) => model.measureEntity,
+    ).toList() ?? <MeasureEntity>[];
 
     measures.add(measure);
 
