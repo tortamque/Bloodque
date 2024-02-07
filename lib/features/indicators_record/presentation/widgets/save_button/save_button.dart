@@ -2,6 +2,7 @@ import 'package:bloodque/config/themes/colors.dart';
 import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
 import 'package:bloodque/core/shared/presentation/bloc/measures_bloc.dart';
 import 'package:bloodque/core/shared/presentation/bloc/measures_state.dart';
+import 'package:bloodque/core/shared/presentation/widgets/toast_manager.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_bloc.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_state.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/save_measure_bloc/save_measure_event.dart';
@@ -24,7 +25,7 @@ class SaveButton extends StatelessWidget {
               return SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: TextButton(
-                  onPressed: () {
+                  onPressed: () async {
                     context.read<MeasuresBloc>().add(
                       SaveMeasureEvent(
                         measure: MeasureEntity(
@@ -42,6 +43,8 @@ class SaveButton extends StatelessWidget {
                         ),
                       ),
                     );
+
+                    await ToastManager.showPositiveToast('Your record has been saved! :D');
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color?>(mainColor),
