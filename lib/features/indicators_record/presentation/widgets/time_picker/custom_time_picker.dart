@@ -29,7 +29,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: Row(
             children: [
-              const Icon(Icons.calendar_today),
+              const Icon(Icons.access_time),
               const SizedBox(width: 5),
               _TimeText(selectedDate: _selectedTime),
             ],
