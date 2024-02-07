@@ -1,3 +1,6 @@
+import 'package:bloodque/config/themes/app_theme.dart';
+import 'package:bloodque/config/themes/colors.dart';
+import 'package:bloodque/features/indicators_record/presentation/pages/indicators_record_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +12,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      theme: theme(mainColor),
+      home: const IndicatorsRecordPage(),
     );
   }
 }
