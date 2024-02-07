@@ -19,11 +19,17 @@ class DatabaseServiceImpl implements DatabaseService{
   
   @override
   Future<void> saveMeasure(MeasureEntity measure) async{
-    final measures = getMeasures()?.map(
-      (model) => model.measureEntity,
-    ).toList() ?? <MeasureEntity>[];
+    final measures = getMeasures() ?? <MeasureModel>[];
 
-    measures.add(measure);
+    measures.add(
+      MeasureModel(
+        systolic: measure.systolic,
+        diastolic: measure.diastolic,
+        pulse: measure.pulse,
+        time: measure.time,
+        date: measure.date,
+      ),
+    );
 
     await _box.put(hiveMeasuresKey, measures);
   }
