@@ -1,4 +1,7 @@
+import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_bloc.dart';
+import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class CustomTimePicker extends StatefulWidget {
@@ -17,6 +20,8 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
       initialTime: TimeOfDay.now(),
     ).then((value) {
       setState(() => _selectedTime = value ?? _selectedTime);
+
+      context.read<ChangeMeasureBloc>().add(ChangeTimeMeasureEvent(_selectedTime));
     });
   }
 

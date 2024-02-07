@@ -1,4 +1,7 @@
+import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_bloc.dart';
+import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class CustomDatePicker extends StatefulWidget {
@@ -19,6 +22,8 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       lastDate: DateTime(DateTime.now().year + 1),
     ).then((value) {
       setState(() => _selectedDate = value ?? _selectedDate);
+
+      context.read<ChangeMeasureBloc>().add(ChangeDateMeasureEvent(_selectedDate));
     });
   }
 
