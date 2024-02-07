@@ -1,6 +1,7 @@
 import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
 import 'package:bloodque/features/indicators_record/presentation/widgets/date_picker/custom_date_picker.dart';
 import 'package:bloodque/features/indicators_record/presentation/widgets/record_picker/record_picker.dart';
+import 'package:bloodque/features/indicators_record/presentation/widgets/save_button/save_button.dart';
 import 'package:bloodque/features/indicators_record/presentation/widgets/time_picker/custom_time_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -8,15 +9,17 @@ class IndicatorsRecordPage extends StatelessWidget {
   const IndicatorsRecordPage({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: const CustomAppBar(title: 'New Record'),
+  Widget build(BuildContext context) => const Scaffold(
+    appBar: CustomAppBar(title: 'New Record'),
     body: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          const _RecordPickers(),
-          const _DateText(),
-          const _DateAndTimePickers(),
+          _RecordPickers(),
+          _DateText(),
+          _DateAndTimePickers(),
+          Spacer(),
+          SaveButton(),
         ],
       ),
     ),
@@ -28,7 +31,7 @@ class _RecordPickers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
+    padding: EdgeInsets.symmetric(vertical: 15),
     child: Row(
       children: [
         RecordPicker(
