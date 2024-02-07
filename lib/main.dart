@@ -1,20 +1,27 @@
+import 'package:bloodque/config/themes/app_theme.dart';
+import 'package:bloodque/config/themes/colors.dart';
+import 'package:bloodque/core/dependency_injection.dart';
+import 'package:bloodque/core/shared/presentation/bloc/measures_bloc.dart';
+import 'package:bloodque/features/indicators_record/presentation/pages/indicators_record_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDependencies();
+  
+  runApp(const BloodqueApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class BloodqueApp extends StatelessWidget {
+  const BloodqueApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+  Widget build(BuildContext context) => BlocProvider<MeasuresBloc>(
+    create: (context) => getIt(),
+    child: MaterialApp(
+        theme: theme(mainColor),
+        home: IndicatorsRecordPage(),
       ),
-    );
-  }
+  );
 }
