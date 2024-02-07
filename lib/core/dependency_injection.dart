@@ -1,4 +1,5 @@
 import 'package:bloodque/core/constants/hive_constants.dart';
+import 'package:bloodque/core/shared/data/data_sources/local/database_service.dart';
 import 'package:bloodque/core/shared/data/models/measure_model.dart';
 import 'package:bloodque/core/shared/data/repository/measures_repository_impl.dart';
 import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
@@ -14,8 +15,14 @@ Future<void> initializeDependencies() async {
   var box = await _initializeBox();
 
   getIt
+    // Hive
     ..registerSingleton<Box<dynamic>>(box)
-    ..registerSingleton<MeasuresRepository>(MeasuresRepositoryImpl());
+
+    // Service
+    ..registerSingleton<DatabaseService>(DatabaseServiceImpl(getIt()))
+
+    // Repository
+    ..registerSingleton<MeasuresRepository>(MeasuresRepositoryImpl(getIt()));
 }
 
 Future<void> _initializeHive() async {

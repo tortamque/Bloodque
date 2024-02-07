@@ -1,19 +1,16 @@
-import 'package:bloodque/core/constants/hive_constants.dart';
+import 'package:bloodque/core/shared/data/data_sources/local/database_service.dart';
 import 'package:bloodque/core/shared/data/models/measure_model.dart';
 import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
 import 'package:bloodque/core/shared/domain/repository/measures_repository.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class MeasuresRepositoryImpl implements MeasuresRepository{
+  MeasuresRepositoryImpl(this._databaseService);
+
+  final DatabaseService _databaseService;
+
   @override
-  Future<void> saveMeasure(MeasureEntity measure, Box<dynamic> box) async{
-    final measures = getMeasures(box) ?? <MeasureEntity>[];
-
-    measures.add(measure);
-
-    await box.put(hiveMeasuresKey, measures);
-  }
+  Future<void> saveMeasure(MeasureEntity measure) async => _databaseService.saveMeasure(measure);
   
   @override
-  List<MeasureModel>? getMeasures(Box<dynamic> box) => box.get(hiveMeasuresKey);
+  List<MeasureModel>? getMeasures() => _databaseService.getMeasures();
 }
