@@ -1,4 +1,5 @@
 import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
+import 'package:bloodque/features/indicators_record/presentation/widgets/date_picker/custom_date_picker.dart';
 import 'package:bloodque/features/indicators_record/presentation/widgets/record_picker/record_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -8,10 +9,26 @@ class IndicatorsRecordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: const CustomAppBar(title: 'New Record'),
-    body: Column(
-      children: [
-        _RecordPickers(),
-      ],
+    body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          _RecordPickers(),
+          _DateText(),
+          
+          Row(
+            children: [
+              const CustomDatePicker(),
+              Expanded(
+                child: Container(
+                  height: 50,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     )
   );
 }
@@ -46,6 +63,26 @@ class _RecordPickers extends StatelessWidget {
           initialValue: 80,
         ),
       ],
+    ),
+  );
+}
+
+class _DateText extends StatelessWidget {
+  const _DateText();
+
+  @override
+  Widget build(BuildContext context) => const Padding(
+    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        'Date & Time',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 27,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
   );
 }

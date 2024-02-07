@@ -12,24 +12,21 @@ class RecordPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Expanded(
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: SizedBox(
-        child: Card(
-          color: Colors.white,
-          child: Column(
-            children: [
-              _Title(title: title),
-              _MeasureUnit(measureUnit: measureUnit),
-              CustomNumberPicker(
-                minValue: minValue, 
-                maxValue: maxValue, 
-                initialValue: initialValue,
-              ),
-            ],
-          ),
+    child: SizedBox(
+      child: Card(
+        color: Colors.white,
+        child: Column(
+          children: [
+            _Title(title: title),
+            _MeasureUnit(measureUnit: measureUnit),
+            CustomNumberPicker(
+              minValue: minValue, 
+              maxValue: maxValue, 
+              initialValue: initialValue,
+            ),
+          ],
         ),
-      )
+      ),
     ),
   );
 }
