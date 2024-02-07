@@ -20,7 +20,7 @@ class MeasureEntityAdapter extends TypeAdapter<MeasureEntity> {
       systolic: fields[0] as int,
       diastolic: fields[1] as int,
       pulse: fields[2] as int,
-      time: fields[3] as TimeOfDay,
+      time: fields[3] as DateTime,
       date: fields[4] as DateTime,
     );
   }
