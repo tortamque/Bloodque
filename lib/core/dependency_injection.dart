@@ -7,6 +7,7 @@ import 'package:bloodque/core/shared/domain/repository/measures_repository.dart'
 import 'package:bloodque/core/shared/presentation/bloc/measures_bloc.dart';
 import 'package:bloodque/features/indicators_record/domain/usecases/save_measure/save_measure_usecase.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_bloc.dart';
+import 'package:bloodque/features/view/domain/usecases/get_measures_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -28,9 +29,10 @@ Future<void> initializeDependencies() async {
 
     // Use Cases
     ..registerSingleton<SaveMeasureUseCase>(SaveMeasureUseCase(getIt()))
+    ..registerSingleton<GetMeasuresUseCase>(GetMeasuresUseCase(getIt()))
 
     // Bloc
-    ..registerFactory<MeasuresBloc>(() => MeasuresBloc(getIt()))
+    ..registerFactory<MeasuresBloc>(() => MeasuresBloc(getIt(), getIt()))
     ..registerFactory<ChangeMeasureBloc>(() => ChangeMeasureBloc());
 }
 

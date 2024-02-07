@@ -2,7 +2,7 @@ import 'package:bloodque/config/themes/app_theme.dart';
 import 'package:bloodque/config/themes/colors.dart';
 import 'package:bloodque/core/dependency_injection.dart';
 import 'package:bloodque/core/shared/presentation/bloc/measures_bloc.dart';
-import 'package:bloodque/features/indicators_record/presentation/pages/indicators_record_page.dart';
+import 'package:bloodque/features/view/presentation/pages/main_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +21,7 @@ class BloodqueApp extends StatelessWidget {
     create: (context) => getIt(),
     child: MaterialApp(
         theme: theme(mainColor),
-        home: IndicatorsRecordPage(),
+        home: MainViewPage(),
       ),
   );
 }
