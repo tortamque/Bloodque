@@ -21,14 +21,14 @@ class _MainViewPageState extends State<MainViewPage> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<GetMeasuresBloc>(context).add(GetMeasuresEvent()); 
+    BlocProvider.of<GetMeasuresBloc>(context).add(GetThreeMeasuresEvent()); 
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetMeasuresBloc, GetMeasuresState>(
         builder: (context, state) {
-          if (state is GetMeasuresStateDone) {
+          if (state is GetThreeMeasuresStateDone) {
             return Scaffold(
               appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
               floatingActionButton: FloatingActionButton(
@@ -57,7 +57,7 @@ class _MainViewPageState extends State<MainViewPage> {
                   ),
                 ),
             );
-          } else if (state is GetMeasuresLoading) {
+          } else if (state is GetThreeMeasuresLoading) {
             return const Scaffold(
               appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
               body: Center(child: CircularProgressIndicator()),
