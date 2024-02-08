@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_expression_function_bodies
 
 import 'package:bloodque/config/themes/colors.dart';
+import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
 import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_bloc.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_event.dart';
@@ -31,31 +32,10 @@ class _MainViewPageState extends State<MainViewPage> {
           if (state is GetThreeMeasuresStateDone) {
             return Scaffold(
               appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: mainColor,
-                foregroundColor: Colors.white,
-                onPressed: () {
-                  print('tapped! :D');
-                },
-                child: const Icon(Icons.add),
-              ),
+              floatingActionButton: const _FloatingActionButton(),
               body: state.measures == null 
                 ? const Center(child: Text('No measures'))
-                : Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                  child: ListView.builder(
-                    itemCount: (state.measures?.length ?? 0) + 1,
-                    itemBuilder: (context, index) {
-                      if(index == (state.measures?.length ?? 0)){
-                        return const AllHistoryButton();
-                      }else{
-                        final measure = state.measures![index];
-                      
-                        return MeasureCard(measure: measure);
-                      }
-                    },
-                  ),
-                ),
+                : _PageContent(measures: state.measures!),
             );
           } else if (state is GetThreeMeasuresLoading) {
             return const Scaffold(
@@ -70,5 +50,46 @@ class _MainViewPageState extends State<MainViewPage> {
           );
         },
       );
+  }
+}
+
+class _FloatingActionButton extends StatelessWidget {
+  const _FloatingActionButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: mainColor,
+      foregroundColor: Colors.white,
+      onPressed: () {
+        print('tapped! :D');
+      },
+      child: const Icon(Icons.add),
+    );
+  }
+}
+
+class _PageContent extends StatelessWidget {
+  const _PageContent({required this.measures});
+
+  final List<MeasureEntity>? measures;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      child: ListView.builder(
+        itemCount: (measures?.length ?? 0) + 1,
+        itemBuilder: (context, index) {
+          if(index == (measures?.length ?? 0)){
+            return const AllHistoryButton();
+          }else{
+            final measure = measures![index];
+          
+            return MeasureCard(measure: measure);
+          }
+        },
+      ),
+    );
   }
 }
