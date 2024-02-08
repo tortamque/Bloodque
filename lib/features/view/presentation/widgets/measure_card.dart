@@ -51,7 +51,7 @@ class _MainMeasures extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-      ]
+      ],
     ),
   );
 }
@@ -88,15 +88,15 @@ class _AdditionalInfo extends StatelessWidget {
           '${time.hour}:${time.minute < 10 ? '0${time.minute}' : time.minute}, ${DateFormat('dd/MM/yyyy').format(date)}',
           style: TextStyle(
             fontSize: 23,
-            color: Colors.grey[600]
+            color: Colors.grey[600],
           ),
         ),
         Text(
           'Pulse: $pulse BPM',
           style: TextStyle(
             fontSize: 23,
-            color: Colors.grey[600]
-          )
+            color: Colors.grey[600],
+          ),
         ),
       ],
     ),
