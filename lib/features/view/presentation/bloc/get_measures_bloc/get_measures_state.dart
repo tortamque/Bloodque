@@ -17,3 +17,13 @@ class GetMeasuresStateDone extends GetMeasuresState{
   
   final List<MeasureEntity>? measures;
 }
+
+class GetThreeMeasuresLoading extends GetMeasuresState{
+  const GetThreeMeasuresLoading();
+}
+
+class GetThreeMeasuresStateDone extends GetMeasuresState{
+  const GetThreeMeasuresStateDone({this.measures});
+  
+  final List<MeasureEntity>? measures;
+}
