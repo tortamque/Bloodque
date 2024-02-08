@@ -55,7 +55,9 @@ class _FloatingActionButton extends StatelessWidget {
       backgroundColor: mainColor,
       foregroundColor: Colors.white,
       onPressed: () {
-        Navigator.pushNamed(context, recordPageConstant);
+        Navigator.pushNamed(context, recordPageConstant).then(
+          (value) => BlocProvider.of<GetThreeMeasuresBloc>(context).add(GetThreeMeasuresEvent())
+        );
       },
       child: const Icon(Icons.add),
     );

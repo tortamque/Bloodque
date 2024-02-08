@@ -33,7 +33,7 @@ class _DetailedViewPageState extends State<DetailedViewPage> {
     if (state is GetAllMeasuresStateDone) {
       return state.measures == null
           ? const Center(child: Text('No measures'))
-          : _PageContent(measures: state.measures!); // Make sure _PageContent is defined.
+          : _PageContent(measures: state.measures!); 
     } else if (state is GetAllMeasuresLoading) {
       return const Center(child: CircularProgressIndicator());
     } else {
