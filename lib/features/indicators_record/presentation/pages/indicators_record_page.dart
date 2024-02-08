@@ -1,4 +1,3 @@
-import 'package:bloodque/core/dependency_injection.dart';
 import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_bloc.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_event.dart';
@@ -13,21 +12,18 @@ class IndicatorsRecordPage extends StatelessWidget {
   const IndicatorsRecordPage({super.key});
 
   @override
-  Widget build(BuildContext context) => BlocProvider<ChangeMeasureBloc>(
-    create: (context) => getIt(),
-    child: const Scaffold(
-      appBar: CustomAppBar(title: 'New Record'),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            _RecordPickers(),
-            _DateText(),
-            _DateAndTimePickers(),
-            Spacer(),
-            SaveButton(),
-          ],
-        ),
+  Widget build(BuildContext context) => const Scaffold(
+    appBar: CustomAppBar(title: 'New Record'),
+    body: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          _RecordPickers(),
+          _DateText(),
+          _DateAndTimePickers(),
+          Spacer(),
+          SaveButton(),
+        ],
       ),
     ),
   );
