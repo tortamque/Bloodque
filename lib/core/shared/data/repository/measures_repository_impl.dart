@@ -12,7 +12,7 @@ class MeasuresRepositoryImpl implements MeasuresRepository{
   Future<void> saveMeasure(MeasureEntity measure) async => _databaseService.saveMeasure(measure);
   
   @override
-  List<MeasureModel>? getMeasures() => _databaseService.getMeasures();
+  List<MeasureModel>? getMeasures() => _databaseService.getMeasures()?.reversed.toList();
   
   @override
   List<MeasureModel>? getThreeMeasures() {
@@ -24,7 +24,7 @@ class MeasuresRepositoryImpl implements MeasuresRepository{
 
     if (measures.length > 3) {
       var lastThree = measures.sublist(measures.length - 3);
-      
+
       return lastThree.reversed.toList();
     } else {
       return measures.reversed.toList();
