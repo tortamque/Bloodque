@@ -22,28 +22,24 @@ class _DetailedViewPageState extends State<DetailedViewPage> {
   }
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<GetAllMeasuresBloc, GetAllMeasuresState>(
-    builder: (context, state) {
-      if (state is GetAllMeasuresStateDone) {
-        return Scaffold(
-          appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-          body: state.measures == null 
-            ? const Center(child: Text('No measures'))
-            : _PageContent(measures: state.measures!),
-        );
-      } else if (state is GetAllMeasuresLoading) {
-        return const Scaffold(
-          appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-          body: Center(child: CircularProgressIndicator()),
-        );
-      }
+  Widget build(BuildContext context) => Scaffold(
+      appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
+      body: BlocBuilder<GetAllMeasuresBloc, GetAllMeasuresState>(
+        builder: (context, state) => _buildBody(state),
+      ),
+    );
 
-      return const Scaffold(
-        appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-        body: Center(child: Text('Error')),
-      );
-    },
-  );
+  Widget _buildBody(GetAllMeasuresState state) {
+    if (state is GetAllMeasuresStateDone) {
+      return state.measures == null
+          ? const Center(child: Text('No measures'))
+          : _PageContent(measures: state.measures!); // Make sure _PageContent is defined.
+    } else if (state is GetAllMeasuresLoading) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return const Center(child: Text('Error'));
+    }
+  }
 }
 
 class _PageContent extends StatelessWidget {
