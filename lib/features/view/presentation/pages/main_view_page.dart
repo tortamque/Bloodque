@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_expression_function_bodies
 
 import 'package:bloodque/config/themes/colors.dart';
 import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
@@ -26,8 +25,7 @@ class _MainViewPageState extends State<MainViewPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<GetMeasuresBloc, GetMeasuresState>(
+  Widget build(BuildContext context) => BlocBuilder<GetMeasuresBloc, GetMeasuresState>(
         builder: (context, state) {
           if (state is GetThreeMeasuresStateDone) {
             return Scaffold(
@@ -52,15 +50,13 @@ class _MainViewPageState extends State<MainViewPage> {
           );
         },
       );
-  }
 }
 
 class _FloatingActionButton extends StatelessWidget {
   const _FloatingActionButton();
 
   @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
+  Widget build(BuildContext context) => FloatingActionButton(
       backgroundColor: mainColor,
       foregroundColor: Colors.white,
       onPressed: () {
@@ -68,7 +64,6 @@ class _FloatingActionButton extends StatelessWidget {
       },
       child: const Icon(Icons.add),
     );
-  }
 }
 
 class _PageContent extends StatelessWidget {
@@ -77,8 +72,7 @@ class _PageContent extends StatelessWidget {
   final List<MeasureEntity>? measures;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       child: ListView.builder(
         itemCount: (measures?.length ?? 0) + 1,
@@ -93,5 +87,4 @@ class _PageContent extends StatelessWidget {
         },
       ),
     );
-  }
 }
