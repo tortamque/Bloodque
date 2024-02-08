@@ -37,7 +37,7 @@ class _MainViewPageState extends State<MainViewPage> {
   Widget _buildBody(GetThreeMeasuresState state) {
     if (state is GetThreeMeasuresStateDone) {
       return state.measures == null
-        ? const Center(child: Text("Can't find your measures, try adding some! 😊"))
+        ? const _EmptyMeasuresText()
         : _PageContent(measures: state.measures!);
     } else if (state is GetThreeMeasuresLoading) {
       return const Center(child: CircularProgressIndicator());
@@ -45,6 +45,21 @@ class _MainViewPageState extends State<MainViewPage> {
       return const Center(child: Text('An error occurred 😔'));
     }
   }
+}
+
+class _EmptyMeasuresText extends StatelessWidget {
+  const _EmptyMeasuresText();
+
+  @override
+  Widget build(BuildContext context) => const Center(
+    child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        "Can't find your measures, try adding some! 😊",
+        style: TextStyle(fontSize: 20),
+      ),
+    ),
+  );
 }
 
 class _FloatingActionButton extends StatelessWidget {
@@ -56,7 +71,7 @@ class _FloatingActionButton extends StatelessWidget {
       foregroundColor: Colors.white,
       onPressed: () {
         Navigator.pushNamed(context, recordPageConstant).then(
-          (value) => BlocProvider.of<GetThreeMeasuresBloc>(context).add(GetThreeMeasuresEvent())
+          (value) => BlocProvider.of<GetThreeMeasuresBloc>(context).add(GetThreeMeasuresEvent()),
         );
       },
       child: const Icon(Icons.add),
