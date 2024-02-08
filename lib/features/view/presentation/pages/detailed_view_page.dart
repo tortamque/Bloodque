@@ -23,7 +23,7 @@ class _DetailedViewPageState extends State<DetailedViewPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
+      appBar: const CustomAppBar(title: 'History'),
       body: BlocBuilder<GetAllMeasuresBloc, GetAllMeasuresState>(
         builder: (context, state) => _buildBody(state),
       ),
@@ -32,7 +32,7 @@ class _DetailedViewPageState extends State<DetailedViewPage> {
   Widget _buildBody(GetAllMeasuresState state) {
     if (state is GetAllMeasuresStateDone) {
       return state.measures == null
-          ? const Center(child: Text('No measures'))
+          ? const Center(child: Text("Can't find any measures."))
           : _PageContent(measures: state.measures!); 
     } else if (state is GetAllMeasuresLoading) {
       return const Center(child: CircularProgressIndicator());
