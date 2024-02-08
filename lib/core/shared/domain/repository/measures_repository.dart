@@ -4,4 +4,5 @@ import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
 abstract class MeasuresRepository{
   Future<void> saveMeasure(MeasureEntity measure);
   List<MeasureModel>? getMeasures();
+  List<MeasureModel>? getThreeMeasures();
 }

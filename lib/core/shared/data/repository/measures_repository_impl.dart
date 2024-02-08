@@ -13,4 +13,15 @@ class MeasuresRepositoryImpl implements MeasuresRepository{
   
   @override
   List<MeasureModel>? getMeasures() => _databaseService.getMeasures();
+  
+  @override
+  List<MeasureModel>? getThreeMeasures() {
+    final measures = _databaseService.getMeasures();
+
+    if (measures == null || measures.isEmpty) {
+      return null;
+    }
+
+    return measures.length > 3 ? measures.sublist(0, 3) : measures;
+  }
 }
