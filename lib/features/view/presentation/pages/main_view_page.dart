@@ -40,12 +40,14 @@ class _MainViewPageState extends State<MainViewPage> {
           } else if (state is GetThreeMeasuresLoading) {
             return const Scaffold(
               appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
+              floatingActionButton: _FloatingActionButton(),
               body: Center(child: CircularProgressIndicator()),
             );
           }
 
           return const Scaffold(
             appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
+            floatingActionButton: _FloatingActionButton(),
             body: Center(child: Text('Error')),
           );
         },
