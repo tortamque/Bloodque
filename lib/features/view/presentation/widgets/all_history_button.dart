@@ -1,3 +1,4 @@
+import 'package:bloodque/core/constants/navigator_constants.dart';
 import 'package:flutter/material.dart';
 
 class AllHistoryButton extends StatelessWidget {
@@ -5,6 +6,7 @@ class AllHistoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
+    onTap: () => Navigator.pushNamed(context, detailedPageConstant),
     child: const Card(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 15),

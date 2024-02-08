@@ -1,5 +1,6 @@
 
 import 'package:bloodque/config/themes/colors.dart';
+import 'package:bloodque/core/constants/navigator_constants.dart';
 import 'package:bloodque/core/shared/domain/entities/measure_entity.dart';
 import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_bloc.dart';
@@ -54,7 +55,7 @@ class _FloatingActionButton extends StatelessWidget {
       backgroundColor: mainColor,
       foregroundColor: Colors.white,
       onPressed: () {
-        print('tapped! :D');
+        Navigator.pushNamed(context, recordPageConstant);
       },
       child: const Icon(Icons.add),
     );
