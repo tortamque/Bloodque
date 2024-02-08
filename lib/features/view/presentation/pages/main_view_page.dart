@@ -26,30 +26,24 @@ class _MainViewPageState extends State<MainViewPage> {
 
   @override
   Widget build(BuildContext context) => BlocBuilder<GetMeasuresBloc, GetMeasuresState>(
-        builder: (context, state) {
-          if (state is GetThreeMeasuresStateDone) {
-            return Scaffold(
-              appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-              floatingActionButton: const _FloatingActionButton(),
-              body: state.measures == null 
-                ? const Center(child: Text('No measures'))
-                : _PageContent(measures: state.measures!),
-            );
-          } else if (state is GetThreeMeasuresLoading) {
-            return const Scaffold(
-              appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-              floatingActionButton: _FloatingActionButton(),
-              body: Center(child: CircularProgressIndicator()),
-            );
-          }
+    builder: (context, state) => Scaffold(
+      appBar: const CustomAppBar(title: 'Blood Pressure BPM Tracker'),
+      floatingActionButton: const _FloatingActionButton(),
+      body: _buildBody(state),
+    ),
+  );
 
-          return const Scaffold(
-            appBar: CustomAppBar(title: 'Blood Pressure BPM Tracker'),
-            floatingActionButton: _FloatingActionButton(),
-            body: Center(child: Text('Error')),
-          );
-        },
-      );
+  Widget _buildBody(GetMeasuresState state) {
+    if (state is GetThreeMeasuresStateDone) {
+      return state.measures == null
+        ? const Center(child: Text("Can't find your measures, try adding some! 😊"))
+        : _PageContent(measures: state.measures!);
+    } else if (state is GetThreeMeasuresLoading) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      return const Center(child: Text('An error occurred 😔'));
+    }
+  }
 }
 
 class _FloatingActionButton extends StatelessWidget {
