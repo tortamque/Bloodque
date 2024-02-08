@@ -8,6 +8,7 @@ import 'package:bloodque/features/indicators_record/domain/usecases/save_measure
 import 'package:bloodque/features/indicators_record/presentation/bloc/change_measure_bloc/change_measure_bloc.dart';
 import 'package:bloodque/features/indicators_record/presentation/bloc/save_measure_bloc/save_measures_bloc.dart';
 import 'package:bloodque/features/view/domain/usecases/get_measures_usecase.dart';
+import 'package:bloodque/features/view/domain/usecases/get_three_measures_usecase.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -30,11 +31,12 @@ Future<void> initializeDependencies() async {
 
     // Use Cases
     ..registerSingleton<SaveMeasureUseCase>(SaveMeasureUseCase(getIt()))
-    ..registerSingleton<GetMeasuresUseCase>(GetMeasuresUseCase(getIt()))
+    ..registerSingleton<GetMeasuresUseCase>(GetMeasuresUseCase(getIt())) 
+    ..registerSingleton<GetThreeMeasuresUseCase>(GetThreeMeasuresUseCase(getIt()))
 
     // Bloc
     ..registerFactory<SaveMeasuresBloc>(() => SaveMeasuresBloc(getIt()))
-    ..registerFactory<GetMeasuresBloc>(() => GetMeasuresBloc(getIt()))
+    ..registerFactory<GetMeasuresBloc>(() => GetMeasuresBloc(getIt(), getIt()))
     ..registerFactory<ChangeMeasureBloc>(() => ChangeMeasureBloc());
 }
 
