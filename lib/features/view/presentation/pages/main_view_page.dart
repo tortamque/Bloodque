@@ -5,6 +5,7 @@ import 'package:bloodque/core/shared/presentation/widgets/custom_app_bar.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_bloc.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_event.dart';
 import 'package:bloodque/features/view/presentation/bloc/get_measures_bloc/get_measures_state.dart';
+import 'package:bloodque/features/view/presentation/widgets/all_history_button.dart';
 import 'package:bloodque/features/view/presentation/widgets/measure_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,13 +41,20 @@ class _MainViewPageState extends State<MainViewPage> {
               ),
               body: state.measures == null 
                 ? const Center(child: Text('No measures'))
-                : ListView.builder(
-                  itemCount: state.measures?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final measure = state.measures![index];
-      
-                    return MeasureCard(measure: measure);
-                  },
+                : Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  child: ListView.builder(
+                    itemCount: (state.measures?.length ?? 0) + 1,
+                    itemBuilder: (context, index) {
+                      if(index == (state.measures?.length ?? 0)){
+                        return const AllHistoryButton();
+                      }else{
+                        final measure = state.measures![index];
+                      
+                        return MeasureCard(measure: measure);
+                      }
+                    },
+                  ),
                 ),
             );
           } else if (state is GetMeasuresLoading) {
