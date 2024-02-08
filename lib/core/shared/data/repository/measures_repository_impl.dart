@@ -22,6 +22,12 @@ class MeasuresRepositoryImpl implements MeasuresRepository{
       return null;
     }
 
-    return measures.length > 3 ? measures.sublist(0, 3) : measures;
+    if (measures.length > 3) {
+      var lastThree = measures.sublist(measures.length - 3);
+      
+      return lastThree.reversed.toList();
+    } else {
+      return measures.reversed.toList();
+    }
   }
 }
